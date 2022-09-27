@@ -1,0 +1,32 @@
+<?php
+
+    if(isset($_POST['sub'])){
+        $name= $_POST['name'];
+        $email= $_POST['email'];
+        $maseg= $_POST['maseg'];
+
+
+        $connection= mysqli_connect('localhost','root','','twanty2');
+
+        if($connection){
+            
+        }else{
+            die ('يوجد مشكلة بقاعدة البيانات');
+        }
+
+        $query="insert into contactus (name, email, subject) values ('$name','$email','$maseg')";
+
+
+        $result =mysqli_query($connection,$query);
+
+        #true,fales
+
+       if(!$result){
+        die('Query failed'.mysqli_error($connection));
+        }else{
+        echo 'تم إرسال الرسالة بنجاح';
+        }
+
+    }
+
+?>
